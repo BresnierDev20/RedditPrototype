@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         searchTextField.delegate = self
+        CustomLoader.shared.showLoader()
         getReddit(query: "venezuela")
         settingTableView()
         settingsNavBar()
@@ -38,7 +39,7 @@ class HomeViewController: BaseViewController {
         viewModel.getRedditTop(query: query)
             .sink(receiveCompletion: { [weak self] completion in
               guard let self = self else { return }
-
+               
               switch completion {
               case .finished:
                   print("llego")
