@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="RedditPrototype" customModuleProvider="target">
+            <connections>
+                <outlet property="homeTableView" destination="x9Z-cn-vIw" id="R9B-RI-HwN"/>
+                <outlet property="searchTextField" destination="brI-7w-Xmw" id="oUd-Wd-UNR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="x9Z-cn-vIw">
+                    <rect key="frame" x="0.0" y="150" width="393" height="702"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Qhr-Bm-Alv"/>
+                        <outlet property="delegate" destination="-1" id="Zzf-h6-vIg"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mym-ak-jvR">
+                    <rect key="frame" x="0.0" y="59" width="393" height="81"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Busqueda " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="brI-7w-Xmw" customClass="SearchTextField" customModule="RedditPrototype" customModuleProvider="target">
+                            <rect key="frame" x="8" y="15" width="377" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="sc0-W5-TOw"/>
+                            </constraints>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2A-VR-WGq">
+                            <rect key="frame" x="336.33333333333331" y="21" width="1" height="38"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="Pmv-qY-H9c"/>
+                                <constraint firstAttribute="width" constant="1" id="SmI-wr-IAW"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3br-ua-oCK">
+                            <rect key="frame" x="345" y="25" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="gkh-8v-1vL"/>
+                                <constraint firstAttribute="width" constant="30" id="okc-Zg-lqc"/>
+                            </constraints>
+                            <color key="tintColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system">
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" name="navColorWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="3br-ua-oCK" secondAttribute="bottom" constant="26" id="03q-XY-g3a"/>
+                        <constraint firstItem="c2A-VR-WGq" firstAttribute="top" secondItem="brI-7w-Xmw" secondAttribute="bottom" constant="-44" id="3sK-by-7TS"/>
+                        <constraint firstAttribute="trailing" secondItem="3br-ua-oCK" secondAttribute="trailing" constant="18" id="K6c-R2-waG"/>
+                        <constraint firstItem="brI-7w-Xmw" firstAttribute="top" secondItem="Mym-ak-jvR" secondAttribute="top" constant="15" id="Uoa-BO-EeD"/>
+                        <constraint firstAttribute="trailing" secondItem="brI-7w-Xmw" secondAttribute="trailing" constant="8" id="VR3-9F-H2z"/>
+                        <constraint firstItem="3br-ua-oCK" firstAttribute="leading" secondItem="c2A-VR-WGq" secondAttribute="trailing" constant="7.6699999999999999" id="Vbk-it-szX"/>
+                        <constraint firstItem="3br-ua-oCK" firstAttribute="top" secondItem="Mym-ak-jvR" secondAttribute="top" constant="25" id="bEY-jW-Ksz"/>
+                        <constraint firstItem="brI-7w-Xmw" firstAttribute="leading" secondItem="Mym-ak-jvR" secondAttribute="leading" constant="8" id="skW-vk-saa"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="navColorWhite"/>
+            <constraints>
+                <constraint firstItem="x9Z-cn-vIw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2j7-CC-BdC"/>
+                <constraint firstAttribute="bottom" secondItem="x9Z-cn-vIw" secondAttribute="bottom" id="2zl-ho-p3s"/>
+                <constraint firstItem="x9Z-cn-vIw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="91" id="Hbr-to-odR"/>
+                <constraint firstItem="Mym-ak-jvR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IBx-lV-GFF"/>
+                <constraint firstItem="x9Z-cn-vIw" firstAttribute="top" secondItem="Mym-ak-jvR" secondAttribute="bottom" constant="10" id="Xg1-ye-7Ob"/>
+                <constraint firstItem="x9Z-cn-vIw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fI9-bJ-cF8"/>
+                <constraint firstItem="Mym-ak-jvR" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tvi-Vf-er5"/>
+                <constraint firstItem="Mym-ak-jvR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wbw-8v-7eE"/>
+            </constraints>
+            <point key="canvasLocation" x="127.48091603053435" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="brI-7w-Xmw">
+            <size key="intrinsicContentSize" width="96.333333333333329" height="42.666666666666664"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <namedColor name="navColorWhite">
+            <color red="0.98799997568130493" green="0.98799997568130493" blue="0.98799997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
