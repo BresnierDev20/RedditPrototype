@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
         }
         
         titleDetail.text = reddit?.data.title
-        commentsLabel.text = "Comentario: \(String(describing: reddit?.data.numComments))"
+        commentsLabel.text = "\(reddit?.data.numComments ?? 0)"
         profileTitleDetail.text = reddit?.data.author
     }
 
