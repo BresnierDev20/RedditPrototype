@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		348425A82C34A81A00B1E703 /* AccessTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348425A72C34A81A00B1E703 /* AccessTokenUseCase.swift */; };
+		348425AA2C34AA1B00B1E703 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348425A92C34AA1B00B1E703 /* Token.swift */; };
+		348425AD2C35BF9300B1E703 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348425AC2C35BF9300B1E703 /* Helper.swift */; };
+		348425AF2C35BFAF00B1E703 /* RPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348425AE2C35BFAF00B1E703 /* RPSettings.swift */; };
 		34AB680E2BBF8E7E00C85EC0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB680C2BBF8E7E00C85EC0 /* HomeViewController.swift */; };
 		34AB680F2BBF8E7E00C85EC0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34AB680D2BBF8E7E00C85EC0 /* HomeViewController.xib */; };
 		34AB68112BBF8E8C00C85EC0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB68102BBF8E8C00C85EC0 /* HomeViewModel.swift */; };
-		34AB68132BBF8E9E00C85EC0 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB68122BBF8E9E00C85EC0 /* DetailViewModel.swift */; };
 		34AB68172BBF8ED100C85EC0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB68152BBF8ED100C85EC0 /* DetailViewController.swift */; };
 		34AB68182BBF8ED100C85EC0 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34AB68162BBF8ED100C85EC0 /* DetailViewController.xib */; };
 		34AB681A2BBF8F3500C85EC0 /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB68192BBF8F3500C85EC0 /* Reddit.swift */; };
@@ -42,10 +45,13 @@
 
 /* Begin PBXFileReference section */
 		0AF61C4484D17E821FB95CE1 /* Pods-RedditPrototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditPrototype.debug.xcconfig"; path = "Target Support Files/Pods-RedditPrototype/Pods-RedditPrototype.debug.xcconfig"; sourceTree = "<group>"; };
+		348425A72C34A81A00B1E703 /* AccessTokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenUseCase.swift; sourceTree = "<group>"; };
+		348425A92C34AA1B00B1E703 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		348425AC2C35BF9300B1E703 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		348425AE2C35BFAF00B1E703 /* RPSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPSettings.swift; sourceTree = "<group>"; };
 		34AB680C2BBF8E7E00C85EC0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		34AB680D2BBF8E7E00C85EC0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		34AB68102BBF8E8C00C85EC0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		34AB68122BBF8E9E00C85EC0 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		34AB68152BBF8ED100C85EC0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		34AB68162BBF8ED100C85EC0 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		34AB68192BBF8F3500C85EC0 /* Reddit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit.swift; sourceTree = "<group>"; };
@@ -90,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		348425AB2C35BE3B00B1E703 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				348425AE2C35BFAF00B1E703 /* RPSettings.swift */,
+				348425AC2C35BF9300B1E703 /* Helper.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		34AB68012BBF8D4200C85EC0 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				34AB68192BBF8F3500C85EC0 /* Reddit.swift */,
+				348425A92C34AA1B00B1E703 /* Token.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,18 +181,9 @@
 		34AB68092BBF8DCC00C85EC0 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				34AB680A2BBF8DEE00C85EC0 /* ViewModel */,
 				34AB68142BBF8EB900C85EC0 /* View */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		34AB680A2BBF8DEE00C85EC0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				34AB68122BBF8E9E00C85EC0 /* DetailViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		34AB68142BBF8EB900C85EC0 /* View */ = {
@@ -250,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				34AB68322BBF9E9C00C85EC0 /* HomeUseCase.swift */,
+				348425A72C34A81A00B1E703 /* AccessTokenUseCase.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -262,12 +270,12 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
-		34AB683B2BBFA10E00C85EC0 /* Helper */ = {
+		34AB683B2BBFA10E00C85EC0 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
 				34AB683C2BBFA11F00C85EC0 /* ShowLoader.swift */,
 			);
-			path = Helper;
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 		34AB68402BBFA3C500C85EC0 /* DI */ = {
@@ -352,7 +360,8 @@
 		34D0EB7C2BBF8C8C008CA9E4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				34AB683B2BBFA10E00C85EC0 /* Helper */,
+				348425AB2C35BE3B00B1E703 /* Util */,
+				34AB683B2BBFA10E00C85EC0 /* DesignSystem */,
 				34D0EB7D2BBF8CA3008CA9E4 /* Extensions */,
 			);
 			path = UI;
@@ -406,7 +415,7 @@
 				34D0EB5E2BBF8918008CA9E4 /* Sources */,
 				34D0EB5F2BBF8918008CA9E4 /* Frameworks */,
 				34D0EB602BBF8918008CA9E4 /* Resources */,
-				B60B906198726A70C4DD8BDE /* [CP] Embed Pods Frameworks */,
+				7C3FDA6034E915FFAEAF43A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -467,7 +476,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B60B906198726A70C4DD8BDE /* [CP] Embed Pods Frameworks */ = {
+		7C3FDA6034E915FFAEAF43A9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -514,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34AB683D2BBFA11F00C85EC0 /* ShowLoader.swift in Sources */,
+				348425AA2C34AA1B00B1E703 /* Token.swift in Sources */,
 				34F8CE2A2BBFE78E004A0D95 /* LHTextField.swift in Sources */,
 				34D0EB6A2BBF8918008CA9E4 /* BaseViewController.swift in Sources */,
 				34AB682C2BBF9C1800C85EC0 /* HomeRepository.swift in Sources */,
@@ -523,7 +533,6 @@
 				34AB68212BBF90BA00C85EC0 /* HomeRemoteDtaSource.swift in Sources */,
 				34AB68422BBFA3E800C85EC0 /* UseCaseContainer.swift in Sources */,
 				34AB68382BBFA09600C85EC0 /* AppRoute.swift in Sources */,
-				34AB68132BBF8E9E00C85EC0 /* DetailViewModel.swift in Sources */,
 				34AB681A2BBF8F3500C85EC0 /* Reddit.swift in Sources */,
 				34AB68262BBF9ACF00C85EC0 /* DataContainer.swift in Sources */,
 				34AB68332BBF9E9C00C85EC0 /* HomeUseCase.swift in Sources */,
@@ -536,7 +545,10 @@
 				34AB68232BBF918D00C85EC0 /* HomeRemoteDtaSourceImpl.swift in Sources */,
 				34AB680E2BBF8E7E00C85EC0 /* HomeViewController.swift in Sources */,
 				34AB68362BBF9F4600C85EC0 /* NetworkContainer.swift in Sources */,
+				348425AD2C35BF9300B1E703 /* Helper.swift in Sources */,
 				34AB68172BBF8ED100C85EC0 /* DetailViewController.swift in Sources */,
+				348425A82C34A81A00B1E703 /* AccessTokenUseCase.swift in Sources */,
+				348425AF2C35BFAF00B1E703 /* RPSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

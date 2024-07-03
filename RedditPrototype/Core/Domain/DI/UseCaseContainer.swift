@@ -9,5 +9,6 @@ import Factory
 
 extension Container {
     static var getHomeeUseCase: HomeUseCase { HomeUseCase() }
+    static var getAccessTokenUseCase: AccessTokenUseCase { AccessTokenUseCase() }
 }
 

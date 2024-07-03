@@ -17,12 +17,11 @@ struct RedditData: Codable {
     let dist: Int
     let geoFilter: String
     let children: [RedditChild]
-    let before: String?
     
     enum CodingKeys: String, CodingKey {
         case after, dist
         case geoFilter = "geo_filter"
-        case children, before
+        case children
     }
 }
 

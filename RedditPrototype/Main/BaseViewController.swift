@@ -41,13 +41,11 @@ class BaseViewController: UIViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         labelText.textColor = UIColor.white
         
-        
         let logo: UIImageView
         
         logo = UIImageView(image: UIImage(named: "Logo"))
         logo.frame = CGRect(x: 40, y: 0, width: 40, height: 30)
         logo.contentMode = .scaleAspectFill
-        
         
         titleView.addSubview(logo)
         
@@ -78,8 +76,8 @@ class BaseViewController: UIViewController {
         navigationItem.leftBarButtonItems = [leftButton]
     }
     
-    func mostrarAlerta() {
-        let alertController = UIAlertController(title: "Error", message: "Lo sentimos, no se pudieron encontrar resultados en el servidor..", preferredStyle: .alert)
+    func mostrarAlerta(messages: String) {
+        let alertController = UIAlertController(title: "Error", message: messages, preferredStyle: .alert)
 
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
@@ -87,6 +85,7 @@ class BaseViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
 extension BaseViewController {
     func displaySimpleAlert(with title: String, message: String, titleButton: String) {
         let alert = UIAlertController(title: title, message: message,
@@ -104,5 +103,3 @@ extension BaseViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-

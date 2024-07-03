@@ -30,6 +30,8 @@ import Foundation
 import SwiftUI
 #endif
 
+#if swift(>=5.1)
+
 /// Convenience property wrapper takes a factory and resolves an instance of the desired type.
 ///
 /// Property wrappers implement an annotation pattern to resolving dependencies, similar to using
@@ -271,7 +273,7 @@ import SwiftUI
     }
 }
 
-#if canImport(SwiftUI)
+#if os(iOS) || os(macOS) || os(tvOS) || os(watchOS)
 /// Immediate injection property wrapper for SwiftUI ObservableObjects.
 ///
 /// This wrapper is meant for use in SwiftUI Views and exposes bindable objects similar to that of SwiftUI @StateObject
@@ -302,12 +304,12 @@ import SwiftUI
     /// Initializes the property wrapper. The dependency is resolved on initialization.
     /// - Parameter keyPath: KeyPath to a Factory on the default Container.
     public init(_ keyPath: KeyPath<Container, Factory<T>>) {
-        self._dependency = StateObject<T>(wrappedValue: Container.shared[keyPath: keyPath]())
+        self._dependency = StateObject(wrappedValue: Container.shared[keyPath: keyPath]())
     }
     /// Initializes the property wrapper. The dependency is resolved on initialization.
     /// - Parameter keyPath: KeyPath to a Factory on the specified Container.
     public init<C:SharedContainer>(_ keyPath: KeyPath<C, Factory<T>>) {
-        self._dependency = StateObject<T>(wrappedValue: C.shared[keyPath: keyPath]())
+        self._dependency = StateObject(wrappedValue: C.shared[keyPath: keyPath]())
     }
     /// Manages the wrapped dependency.
     public var wrappedValue: T {
@@ -326,7 +328,7 @@ extension InjectedObject {
     /// Still has issue with attempting to pass dependency into existing view when existing InjectedObject has keyPath.
     /// https://forums.swift.org/t/allow-property-wrappers-with-multiple-arguments-to-defer-initialization-when-wrappedvalue-is-not-specified
     public init(_ wrappedValue: T) {
-        self._dependency = StateObject<T>(wrappedValue: wrappedValue)
+        self._dependency = StateObject(wrappedValue: wrappedValue)
     }
 }
 #endif
@@ -347,3 +349,5 @@ internal struct FactoryReference<C: SharedContainer, R>: BoxedFactoryReference {
         C.shared[keyPath: keypath] as! Factory<T>
     }
 }
+
+#endif

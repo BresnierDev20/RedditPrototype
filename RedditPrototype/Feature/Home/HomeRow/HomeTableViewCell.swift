@@ -20,7 +20,6 @@ class HomeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         containerView.layer.cornerRadius = 10
         containerView.layer.shadowColor = UIColor.gray.cgColor
         containerView.layer.shadowOpacity = 0.3
@@ -30,13 +29,14 @@ class HomeTableViewCell: UITableViewCell {
     
     func configUI(response: RedditChild) {
         let maxCharacters = 100
+        let description = response.data.title
         
-          let description = response.data.title
-          if description.count > maxCharacters {
-              title.text = String(description.prefix(maxCharacters)) + "..."
-          } else {
-              title.text = description
-          }
+        if description.count > maxCharacters {
+            title.text = String(description.prefix(maxCharacters)) + "..."
+        } else {
+            title.text = description
+        }
+        
         author.text = response.data.author
         comments.text =  "\(response.data.numComments)"
         subredditDescription.text = "\(response.data.subreddit)"

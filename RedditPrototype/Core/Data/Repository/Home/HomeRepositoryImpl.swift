@@ -15,5 +15,8 @@ class HomeRepositoryImpl: HomeRepository {
     func redditTop(query: String) -> AnyPublisher<RedditResponse, RemoteError> {
         return remote.redditTop(query: query)
     }
-
+    
+    func accessToken() -> AnyPublisher<Token, RemoteError> {
+        return remote.accessToken()
+    }
 }

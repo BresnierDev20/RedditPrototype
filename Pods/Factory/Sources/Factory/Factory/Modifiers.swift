@@ -169,10 +169,10 @@ extension FactoryModifying {
         for context in contexts {
             switch context {
             case .arg, .args, .device, .simulator:
-                registration.context(context, key: registration.key, factory: factory)
+                registration.context(context, id: registration.id, factory: factory)
             default:
                 #if DEBUG
-                registration.context(context, key: registration.key, factory: factory)
+                registration.context(context, id: registration.id, factory: factory)
                 #endif
                 break
             }
@@ -247,10 +247,8 @@ extension FactoryModifying {
 
     /// Resets the Factory's behavior to its original state, removing any registrations and clearing any cached items from the specified scope.
     /// - Parameter options: options description
-    @discardableResult
-    public func reset(_ options: FactoryResetOptions = .all) -> Self {
+    public func reset(_ options: FactoryResetOptions = .all) {
         registration.reset(options: options)
-        return self
     }
     
 }

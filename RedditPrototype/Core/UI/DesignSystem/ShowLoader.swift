@@ -31,8 +31,6 @@ class CustomLoader {
     }
 }
 
-
-
 class LoaderVideo: UIView {
     static let shared = LoaderVideo() // Singleton para acceder desde cualquier lugar
     
@@ -70,6 +68,5 @@ class LoaderVideo: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 

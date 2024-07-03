@@ -5,7 +5,7 @@
 
 A new approach to Container-Based Dependency Injection for Swift and SwiftUI.
 
-## Factory 2.3
+## Factory 2.2
 
 Factory is strongly influenced by SwiftUI, and in my opinion is highly suited for use in that environment. Factory is...
 
@@ -41,15 +41,7 @@ Unlike Resolver which often requires defining a plethora of nested registration 
 Injecting an instance of our service is equally straightforward. Here's just one of the many ways Factory can be used.
 
 ```swift
-// Pre iOS 17 with ObservableObject
 class ContentViewModel: ObservableObject {
-    @Injected(\.myService) private var myService
-    ...
-}
-
-// Post iOS 17 with Observation
-@Observable class ContentViewModel {
-    @ObservationIgnored
     @Injected(\.myService) private var myService
     ...
 }
@@ -144,7 +136,7 @@ It's easy. Just replace `MyService` with a mock that also conforms to `MyService
 ```swift
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let _ = Container.shared.myService.register { MockService2() }
+        let _ = Container.myService.register { MockService2() }
         ContentView()
     }
 }
@@ -316,7 +308,7 @@ If you want to support my work on Factory and Resolver, consider a [GitHub Spons
 
 Or you can just buy me a cup of coffee!
 
-And many thanks to my sponsors: sueddeutsche, doozMen, and Mercedes-Benz!
+And many thanks to my new sponsors: sueddeutsche, doozMen.
 
 ## Author
 

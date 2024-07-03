@@ -98,30 +98,16 @@ public protocol ManagedContainer: AnyObject {
 /// Defines the default factory helpers for containers
 extension ManagedContainer {
     /// Syntactic sugar allows container to create a properly bound Factory.
-    @inline(__always) public func callAsFunction<T>(key: StaticString = #function, _ factory: @escaping () -> T) -> Factory<T> {
+    @inlinable public func callAsFunction<T>(key: String = #function, _ factory: @escaping () -> T) -> Factory<T> {
         Factory(self, key: key, factory)
     }
     /// Syntactic sugar allows container to create a properly bound ParameterFactory.
-    @inline(__always) public func callAsFunction<P,T>(key: StaticString = #function, _ factory: @escaping (P) -> T) -> ParameterFactory<P,T> {
+    @inlinable public func callAsFunction<P,T>(key: String = #function, _ factory: @escaping (P) -> T) -> ParameterFactory<P,T> {
         ParameterFactory(self, key: key, factory)
     }
     /// Syntactic sugar allows container to create a factory where registration is promised before resolution.
-    public func promised<T>(key: StaticString = #function) -> Factory<T?>  {
+    public func promised<T>(key: String = #function) -> Factory<T?>  {
         Factory<T?>(self, key: key) {
-            #if DEBUG
-            if self.manager.promiseTriggersError {
-                resetAndTriggerFatalError("\(T.self) was not registered", #file, #line)
-            } else {
-                return nil
-            }
-            #else
-            nil
-            #endif
-        }
-    }
-    /// Syntactic sugar allows container to create a factory where registration is promised before resolution.
-    public func promised<P,T>(key: StaticString = #function) -> ParameterFactory<P,T?>  {
-        ParameterFactory<P,T?>(self, key: key) { _ in
             #if DEBUG
             if self.manager.promiseTriggersError {
                 resetAndTriggerFatalError("\(T.self) was not registered", #file, #line)
@@ -205,9 +191,9 @@ public final class ContainerManager {
     #endif
 
     /// Alias for Factory registration map.
-    internal typealias FactoryMap = [FactoryKey:AnyFactory]
+    internal typealias FactoryMap = [String:AnyFactory]
     /// Alias for Factory options map.
-    internal typealias FactoryOptionsMap = [FactoryKey:FactoryOptions]
+    internal typealias FactoryOptionsMap = [String:FactoryOptions]
     /// Alias for Factory once set.
     internal typealias FactoryOnceSet = Set<String>
 
@@ -217,14 +203,12 @@ public final class ContainerManager {
     internal var autoRegistrationCheckNeeded = true
     /// Flag indicating auto registration is in process.
     internal var autoRegistering = false
-    /// Minimum capacity for structures
-    internal var minimumCapacity: Int = 256
     /// Updated registrations for Factory's.
-    internal lazy var registrations: FactoryMap = .init(minimumCapacity: minimumCapacity)
+    internal lazy var registrations: FactoryMap = .init(minimumCapacity: 32)
     /// Updated options for Factory's.
-    internal lazy var options: FactoryOptionsMap = .init(minimumCapacity: minimumCapacity)
+    internal lazy var options: FactoryOptionsMap = .init(minimumCapacity: 32)
     /// Scope cache for Factory's managed by this container.
-    internal lazy var cache: Scope.Cache = Scope.Cache(minimumCapacity: minimumCapacity)
+    internal lazy var cache: Scope.Cache = Scope.Cache()
     /// Push/Pop stack for registrations, options, cache, and so on.
     internal lazy var stack: [(FactoryMap, FactoryOptionsMap, Scope.Cache.CacheMap, Bool)] = []
 

@@ -29,41 +29,29 @@ import Foundation
 /// Shared registration type for Factory and ParameterFactory. Used internally to manage the registration and resolution process.
 public struct FactoryRegistration<P,T> {
 
-    /// Key used to manage registrations and cached values.
-    internal let key: FactoryKey
+    /// Type string for id and circular dependency chain check
+    public let type: String
+    /// ID used to manage registrations and cached values. Usually looks something like "service<MyApp.MyService>".
+    public let id: String
     /// A strong reference to the container supporting this Factory.
     internal let container: ManagedContainer
     /// Typed factory with scope and factory.
     internal let factory: (P) -> T
 
-    #if DEBUG
-    /// Internal debug
-    internal let debug: FactoryDebugInformation
-    #endif
-
     /// Mutable once flag
     internal var once: Bool = false
 
     /// Initializer for registration sets passed values and default scope from container manager.
-    internal init(key: StaticString, container: ManagedContainer, factory: @escaping (P) -> T) {
-        self.key = FactoryKey(type: T.self, key: key)
+    internal init(key: String, container: ManagedContainer, factory: @escaping (P) -> T) {
+        self.type = String(reflecting: T.self) // expensive, only do once
+        self.id = "\(key)<\(type)>"
         self.container = container
         self.factory = factory
-        #if DEBUG
-        globalDebugLock.lock()
-        if let debug = globalDebugInformationMap[self.key] {
-            self.debug = debug
-        } else {
-            self.debug = .init(type: String(reflecting: T.self), key: key)
-            globalDebugInformationMap[self.key] = self.debug
-        }
-        globalDebugLock.unlock()
-        #endif
     }
 
     /// Support function for one-time only option updates
     internal func unsafeCanUpdateOptions() -> Bool {
-        let options = container.manager.options[key]
+        let options = container.manager.options[id]
         return options == nil || options?.once == once
     }
 
@@ -78,13 +66,15 @@ public struct FactoryRegistration<P,T> {
         container.unsafeCheckAutoRegistration()
 
         let manager = container.manager
-        let options = manager.options[key]
+        let options = manager.options[id]
+        let scope = options?.scope ?? manager.defaultScope
+        let ttl = options?.ttl
 
         var current: (P) -> T
 
         if let found = options?.factoryForCurrentContext() as? TypedFactory<P,T> {
             current = found.factory
-        } else if let found = manager.registrations[key] as? TypedFactory<P,T> {
+        } else if let found = manager.registrations[id] as? TypedFactory<P,T> {
             current = found.factory
         } else {
             current = factory
@@ -95,7 +85,7 @@ public struct FactoryRegistration<P,T> {
             circularDependencyChainCheck(max: manager.dependencyChainTestMax)
         }
 
-        let traceLevel: Int = globalTraceResolutions.count
+        let traceLevel = globalTraceResolutions.count
         var traceNew: String?
         if manager.trace {
             let wrapped = current
@@ -108,12 +98,7 @@ public struct FactoryRegistration<P,T> {
         #endif
 
         globalGraphResolutionDepth += 1
-        let instance: T
-        if let scope = options?.scope ?? manager.defaultScope {
-            instance = scope.resolve(using: manager.cache, key: key, ttl: options?.ttl, factory: { current(parameters) }) }
-        else {
-            instance = current(parameters)
-        }
+        let instance: T = scope?.resolve(using: manager.cache, id: id, ttl: ttl, factory: { current(parameters) }) ?? current(parameters)
         globalGraphResolutionDepth -= 1
 
         if globalGraphResolutionDepth == 0 {
@@ -131,9 +116,9 @@ public struct FactoryRegistration<P,T> {
         if manager.trace {
             let indent = String(repeating: "    ", count: globalGraphResolutionDepth)
             let address = (((instance as? OptionalProtocol)?.hasWrappedValue ?? true)) ? Int(bitPattern: ObjectIdentifier(instance as AnyObject)) : 0
-            let resolution = address == 0 ? "nil" : "\(traceNew ?? "C"):\(address) \(type(of: instance as Any))"
+            let resolution = address == 0 ? "nil" : "\(traceNew ?? "C"):\(address)"
             if globalTraceResolutions.count > traceLevel {
-                globalTraceResolutions[traceLevel] = "\(globalGraphResolutionDepth): \(indent)\(container).\(debug.key) = \(resolution)"
+                globalTraceResolutions[traceLevel] = "\(globalGraphResolutionDepth): \(indent)\(container).\(id) = \(resolution)"
             }
             if globalGraphResolutionDepth == 0 {
                 globalTraceResolutions.forEach { globalLogger($0) }
@@ -145,9 +130,7 @@ public struct FactoryRegistration<P,T> {
         if let decorator = options?.decorator as? (T) -> Void {
             decorator(instance)
         }
-        if let decorator = manager.decorator {
-            decorator(instance)
-        }
+        manager.decorator?(instance)
 
         return instance
     }
@@ -163,10 +146,10 @@ public struct FactoryRegistration<P,T> {
         container.unsafeCheckAutoRegistration()
         if unsafeCanUpdateOptions() {
             let manager = container.manager
-            manager.registrations[key] = TypedFactory(factory: factory)
-            if manager.autoRegistering == false, let scope = manager.options[key]?.scope {
+            manager.registrations[id] = TypedFactory(factory: factory)
+            if manager.autoRegistering == false, let scope = manager.options[id]?.scope {
                 let cache = (scope as? InternalScopeCaching)?.cache ?? manager.cache
-                cache.removeValue(forKey: key)
+                cache.removeValue(forKey: id)
             }
         }
     }
@@ -178,19 +161,19 @@ public struct FactoryRegistration<P,T> {
         globalRecursiveLock.lock()
         container.unsafeCheckAutoRegistration()
         let manager = container.manager
-        if var options = manager.options[key] {
+        if var options = manager.options[id] {
             if once == options.once && scope !== options.scope {
                 options.scope = scope
-                manager.options[key] = options
-                manager.cache.removeValue(forKey: key)
+                manager.options[id] = options
+                manager.cache.removeValue(forKey: id)
             }
         } else {
-            manager.options[key] = FactoryOptions(scope: scope)
+            manager.options[id] = FactoryOptions(scope: scope)
         }
     }
 
     /// Registers a new context.
-    internal func context(_ context: FactoryContextType, key: FactoryKey, factory: @escaping (P) -> T) {
+    internal func context(_ context: FactoryContextType, id: String, factory: @escaping (P) -> T) {
         options { options in
             switch context {
             case .arg(let arg):
@@ -211,7 +194,7 @@ public struct FactoryRegistration<P,T> {
                 }
                 options.contexts?["\(context)"] = TypedFactory(factory: factory)
             }
-            // #146 container.manager.cache.removeValue(forKey: key)
+            container.manager.cache.removeValue(forKey: id)
         }
     }
 
@@ -228,10 +211,10 @@ public struct FactoryRegistration<P,T> {
         globalRecursiveLock.lock()
         container.unsafeCheckAutoRegistration()
         let manager = container.manager
-        var options = manager.options[key] ?? FactoryOptions()
+        var options = manager.options[id] ?? FactoryOptions()
         if options.once == once {
             mutate(&options)
-            manager.options[key] = options
+            manager.options[id] = options
         }
     }
 
@@ -246,10 +229,10 @@ public struct FactoryRegistration<P,T> {
         let manager = container.manager
         switch options {
         case .all:
-            let cache = (manager.options[key]?.scope as? InternalScopeCaching)?.cache ?? manager.cache
-            cache.removeValue(forKey: key)
-            manager.registrations.removeValue(forKey: key)
-            manager.options.removeValue(forKey: key)
+            let cache = (manager.options[id]?.scope as? InternalScopeCaching)?.cache ?? manager.cache
+            cache.removeValue(forKey: id)
+            manager.registrations.removeValue(forKey: id)
+            manager.options.removeValue(forKey: id)
         case .context:
             self.options {
                 $0.argumentContexts = nil
@@ -258,16 +241,16 @@ public struct FactoryRegistration<P,T> {
         case .none:
             break
         case .registration:
-            manager.registrations.removeValue(forKey: key)
+            manager.registrations.removeValue(forKey: id)
         case .scope:
-            let cache = (manager.options[key]?.scope as? InternalScopeCaching)?.cache ?? manager.cache
-            cache.removeValue(forKey: key)
+            let cache = (manager.options[id]?.scope as? InternalScopeCaching)?.cache ?? manager.cache
+            cache.removeValue(forKey: id)
         }
     }
 
     #if DEBUG
     internal func circularDependencyChainCheck(max: Int) {
-        let typeComponents = debug.type.components(separatedBy: CharacterSet(charactersIn: "<>"))
+        let typeComponents = type.components(separatedBy: CharacterSet(charactersIn: "<>"))
         let typeName = typeComponents.count > 1 ? typeComponents[1] : typeComponents[0]
         let typeIndex = globalDependencyChain.firstIndex(where: { $0 == typeName })
         globalDependencyChain.append(typeName)
@@ -357,17 +340,6 @@ extension FactoryOptions {
     }
 
 }
-
-#if DEBUG
-internal struct FactoryDebugInformation {
-    let type: String
-    let key: String
-    internal init(type: String, key: StaticString) {
-        self.type = type
-        self.key = "\(key)<\(type)>"
-    }
-}
-#endif
 
 // Internal Factory type
 internal protocol AnyFactory {}

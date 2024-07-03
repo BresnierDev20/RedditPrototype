@@ -10,4 +10,5 @@ import Alamofire
 
 protocol HomeRemoteDtaSource {
     func redditTop(query: String) -> AnyPublisher<RedditResponse, RemoteError>
+    func accessToken() -> AnyPublisher<Token, RemoteError> 
 }

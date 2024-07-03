@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #2 in HomeRemoteDtaSourceImpl.accessToken():HomeRemoteDtaSourceImpl.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HomeRemoteDtaSourceImpl.accessToken():HomeRemoteDtaSourceImpl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dataResponse.data">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "HomeRemoteDtaSourceImpl.accessToken():HomeRemoteDtaSourceImpl.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HomeRemoteDtaSourceImpl.redditTop(query:):HomeRemoteDtaSourceImpl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "headers">
+            </PersistentString>
+            <PersistentString
+               value = "APIHome.userToken">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "HomeRemoteDtaSourceImpl.redditTop(query:):HomeRemoteDtaSourceImpl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Helper.getUserToken()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
