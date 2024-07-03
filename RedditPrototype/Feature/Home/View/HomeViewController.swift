@@ -57,11 +57,10 @@ class HomeViewController: BaseViewController {
               case .finished:
                 break
               case .failure(let error):
-                  CustomLoader.shared.hideLoader()
                   self.viewModel.redditDt.removeAll()
-                 
                   handleMyOrdersError(error: error)
-                 
+                  CustomLoader.shared.hideLoader()
+                  self.homeTableView.reloadData()
               }
             },receiveValue: { [weak self] result in
               guard let self = self else { return }

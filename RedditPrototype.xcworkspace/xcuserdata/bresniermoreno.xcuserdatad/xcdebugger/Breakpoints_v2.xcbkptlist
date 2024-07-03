@@ -242,36 +242,6 @@
             endingLineNumber = "29"
             landmarkName = "configSearch()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DDAC7068-44AE-4BF5-9A9C-69EEC154DE61 - 425b7ee2731f77f8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RedditPrototype.HomeViewController.configSearch() -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29">
-               </Location>
-               <Location
-                  uuid = "DDAC7068-44AE-4BF5-9A9C-69EEC154DE61 - c9b270fe3aa861dd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in RedditPrototype.HomeViewController.configSearch() -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -332,8 +302,8 @@
             filePath = "RedditPrototype/Feature/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "getReddit(query:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -348,8 +318,8 @@
             filePath = "RedditPrototype/Feature/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "getReddit(query:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -364,40 +334,10 @@
             filePath = "RedditPrototype/Feature/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "getReddit(query:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "171CD517-7900-428E-9D00-BE70C39D6B86 - 998f41e0c81f6e42"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RedditPrototype.HomeViewController.getReddit(query: Swift.String) -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73">
-               </Location>
-               <Location
-                  uuid = "171CD517-7900-428E-9D00-BE70C39D6B86 - dcb99f9d0e118df7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (RedditPrototype.RedditResponse) -&gt; () in RedditPrototype.HomeViewController.getReddit(query: Swift.String) -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -414,36 +354,6 @@
             endingLineNumber = "53"
             landmarkName = "getReddit(query:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CA5952A6-B296-448C-AC8F-928DCD60659B - 998f41e0c81f53be"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RedditPrototype.HomeViewController.getReddit(query: Swift.String) -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53">
-               </Location>
-               <Location
-                  uuid = "CA5952A6-B296-448C-AC8F-928DCD60659B - f8efcd6bd7bdf7dc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;RedditPrototype.RemoteError&gt;) -&gt; () in RedditPrototype.HomeViewController.getReddit(query: Swift.String) -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -504,54 +414,10 @@
             filePath = "RedditPrototype/Feature/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "getReddit(query:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B9AE0836-762C-40FF-9DB5-585445756AC9 - 998f41e0c81f6d6d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RedditPrototype.HomeViewController.getReddit(query: Swift.String) -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66">
-               </Location>
-               <Location
-                  uuid = "B9AE0836-762C-40FF-9DB5-585445756AC9 - f8efcd6bd7bdc90f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;RedditPrototype.RemoteError&gt;) -&gt; () in RedditPrototype.HomeViewController.getReddit(query: Swift.String) -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66">
-               </Location>
-               <Location
-                  uuid = "B9AE0836-762C-40FF-9DB5-585445756AC9 - dcb99f9d0e118ed8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (RedditPrototype.RedditResponse) -&gt; () in RedditPrototype.HomeViewController.getReddit(query: Swift.String) -&gt; ()"
-                  moduleName = "RedditPrototype"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bresniermoreno/Proyectos/Proyecto%20de%20prueba%20/RedditPrototype/RedditPrototype/Feature/Home/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -564,8 +430,8 @@
             filePath = "RedditPrototype/Feature/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "getReddit(query:)"
             landmarkType = "7">
          </BreakpointContent>
